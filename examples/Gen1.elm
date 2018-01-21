@@ -8,6 +8,11 @@ import Html
 import Html.Events as Events
 
 
+removeIndex : Int -> Array a -> Array a
+removeIndex index array =
+    Array.append (Array.slice 0 index array) (Array.slice (index + 1) (Array.length array) array)
+
+
 main : App (Array Int)
 main =
     App.start view <| Array.fromList [ 0 ]
@@ -17,11 +22,6 @@ addCounter : View (Array Int)
 addCounter array =
     Html.button [ Events.onClick <| Action.action (Array.push 0) array ]
         [ Html.text "add counter" ]
-
-
-removeIndex : Int -> Array a -> Array a
-removeIndex index array =
-    Array.append (Array.slice 0 index array) (Array.slice (index + 1) (Array.length array) array)
 
 
 view : View (Array Int)
