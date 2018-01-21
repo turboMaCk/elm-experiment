@@ -23,8 +23,8 @@ traverse views =
     \state -> Html.div [] <| List.map (\i -> i state) views
 
 
-viewMap : (int -> arr) -> (arr -> Html (Action int)) -> View arr
-viewMap predicate =
+map : (a -> b) -> (b -> Html (Action a)) -> View b
+map predicate =
     let
         mapFc f g =
             \x -> f (g x)
