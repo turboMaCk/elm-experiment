@@ -15,6 +15,7 @@ action f a =
     Action <| \() -> ( f a, Cmd.none )
 
 
+mapFc : (a -> b) -> (c -> a) -> c -> b
 mapFc f g =
     \x -> f (g x)
 

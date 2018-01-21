@@ -34,7 +34,7 @@ view states =
         [ addNew ()
             |> View.map (Maybe.withDefault states << Maybe.map (\str -> str :: states))
         , Html.ul [] <|
-            List.map (itemView >> View.map update) states
+            List.map (View.map update << itemView) states
         ]
 
 
